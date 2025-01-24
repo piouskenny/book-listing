@@ -6,7 +6,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/book/{id}', [HomeController::class, 'show'])->name('book.show');
 
 Route::get('/dashboard',[BookSellerController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 

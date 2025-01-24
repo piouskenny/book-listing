@@ -26,7 +26,6 @@
                 </div>
 
                 <div class="mt-6">
-                    <h3 class="text-xl font-semibold mb-4">Your Books</h3>
                     @if($books->isEmpty())
                         <p class="text-gray-500">You have not added any books yet.</p>
                     @else
@@ -36,11 +35,13 @@
                                     <div class="mb-4">
                                         <img src="{{ asset('storage/' . $book->image) }}" alt="Book Image" class="w-full h-56 object-cover rounded-md">
                                     </div>
-                                    <h4 class="text-xl font-semibold">{{ $book->title }}</h4>
-                                    <p class="text-gray-500">{{ $book->author }}</p>
-                                    <p class="mt-2 text-gray-700">{{ Str::limit($book->description, 100) }}</p>
+                                    <h4 class="text-xl font-semibold">Title: {{ $book->title }}</h4>
+                                    <p class="text-gray-900">Author: {{ $book->author }}</p>
+                                    <p class="mt-2 text-gray-900">Description:{{$book->description }}</p>
                                     <p class="mt-2 font-semibold">{{ '#' . number_format($book->price, 2) }}</p>
-                                    <a href="#" class="mt-3 inline-block text-blue-500 hover:underline">View Details</a>
+                                    <a href="{{ route('book.show', $book->id) }}" class="text-xl font-semibold text-blue-600 hover:text-blue-800">
+                                        show details
+                                    </a>
                                 </div>
                             @endforeach
                         </div>
