@@ -9,8 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Fetch all books
-        $books = Books::all(); // You can customize the query if you want to filter books
+        $books = Books::all();
 
         return view('home', compact('books'));
     }

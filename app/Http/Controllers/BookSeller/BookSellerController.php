@@ -10,8 +10,8 @@ class BookSellerController extends Controller
 {
     public function dashboard()
     {
-        // Fetch the authenticated user's books
-        $books = auth()->user()->books; // Assuming the user has a relationship with books
+
+        $books = auth()->user()->books;
 
         return view('dashboard', compact('books'));
     }
