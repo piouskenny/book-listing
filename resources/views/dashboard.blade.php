@@ -20,12 +20,35 @@
                     Bio: {{ Auth::user()->bio }}
                 </div>
                 <div class="p-6">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <a href="{{ route('book.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Add Book
-                     </button>
+                    </a>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-xl font-semibold mb-4">Your Books</h3>
+                    @if($books->isEmpty())
+                        <p class="text-gray-500">You have not added any books yet.</p>
+                    @else
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            @foreach($books as $book)
+                                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md">
+                                    <div class="mb-4">
+                                        <img src="{{ asset('storage/' . $book->image) }}" alt="Book Image" class="w-full h-56 object-cover rounded-md">
+                                    </div>
+                                    <h4 class="text-xl font-semibold">{{ $book->title }}</h4>
+                                    <p class="text-gray-500">{{ $book->author }}</p>
+                                    <p class="mt-2 text-gray-700">{{ Str::limit($book->description, 100) }}</p>
+                                    <p class="mt-2 font-semibold">{{ '#' . number_format($book->price, 2) }}</p>
+                                    <a href="#" class="mt-3 inline-block text-blue-500 hover:underline">View Details</a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
 

@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function books()
+    {
+        return $this->hasMany(Books::class); // Assuming a user has many books
+    }
 }
